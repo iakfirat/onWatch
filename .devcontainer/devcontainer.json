@@ -1,0 +1,33 @@
+{
+  "name": "onWatch — Stacklight GitHub pilot",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "features": {
+    "ghcr.io/devcontainers/features/go:1": {
+      "version": "1.25"
+    }
+  },
+  "hostRequirements": {
+    "cpus": 2,
+    "memory": "4gb",
+    "storage": "16gb"
+  },
+  "forwardPorts": [
+    9211
+  ],
+  "portsAttributes": {
+    "9211": {
+      "label": "onWatch — private quota dashboard",
+      "onAutoForward": "notify",
+      "protocol": "http"
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/bootstrap-onwatch.sh",
+  "postStartCommand": "bash .devcontainer/start-onwatch.sh",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  }
+}
